@@ -1,0 +1,4 @@
+name = "PhyBulletExamples"
+uuid = "5d09c94b-1364-4b78-8a24-87daecc9b9aa"
+authors = ["dominikglandorf <do.gl@gmx.de>", "belledon <mbelledonne@gmail.com>"]
+version = "0.1.0"
