@@ -59,7 +59,8 @@ function ramp(
     end
 
     # add a ramp
-    ramp_col_id = pb.createCollisionShape(pb.GEOM_MESH, fileName="examples/ramp/ramp.obj", physicsClientId=client, meshScale=[2, base_dims[2], slope*2])
+    ramp_path = joinpath(@__DIR__, "ramp.obj")
+    ramp_col_id = pb.createCollisionShape(pb.GEOM_MESH, fileName=ramp_path, physicsClientId=client, meshScale=[2, base_dims[2], slope*2])
     ramp_position = [-2+tableRampIntersection, -base_dims[2]/2, 0]
     ramp_obj_id = pb.createMultiBody(baseCollisionShapeIndex=ramp_col_id, basePosition=ramp_position, physicsClientId=client)
     pb.changeDynamics(ramp_obj_id, -1; mass=0.0, restitution=0.9, physicsClientId=client)
@@ -205,8 +206,6 @@ end
     states = @trace(Gen.Unfold(kernel)(t, init_state, sim), :kernel)
     return states
 end
-
-@load_generated_functions
 
 ################################################################################
 # Inference
